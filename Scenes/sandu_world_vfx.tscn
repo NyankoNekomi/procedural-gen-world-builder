@@ -1,0 +1,116 @@
+[gd_scene format=3 uid="uid://duv7h55b2lfyd"]
+
+[ext_resource type="PackedScene" uid="uid://cpraeiyn4veys" path="res://Scenes/chunk_manager.tscn" id="1_5f2ro"]
+[ext_resource type="PackedScene" uid="uid://cgt7lmfqg4erk" path="res://Scenes/terrain_sand.tscn" id="2_croqk"]
+[ext_resource type="PackedScene" uid="uid://co03ltmqyi5n6" path="res://Scenes/player.tscn" id="3_03ax6"]
+[ext_resource type="Shader" uid="uid://ckkqjh1srppsl" path="res://Scenes/WindShader.gdshader" id="4_03ax6"]
+[ext_resource type="Texture2D" uid="uid://ds741w1ixakxr" path="res://Assets/windshader/wind_line.png" id="4_croqk"]
+[ext_resource type="Shader" uid="uid://bn41j43lgu2lw" path="res://Scenes/Leaves.gdshader" id="6_4wtw4"]
+[ext_resource type="Texture2D" uid="uid://cbqkt7qj0qi13" path="res://Assets/Maple_leaf_transparent.png" id="7_mcblx"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_4wtw4"]
+sky_top_color = Color(0.73333335, 0.8627451, 1, 1)
+sky_horizon_color = Color(0.63961875, 0.60869163, 0.47591037, 1)
+
+[sub_resource type="Sky" id="Sky_62sej"]
+sky_material = SubResource("ProceduralSkyMaterial_4wtw4")
+
+[sub_resource type="Environment" id="Environment_mcblx"]
+background_mode = 2
+background_energy_multiplier = 1.53
+sky = SubResource("Sky_62sej")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_4wtw4"]
+fractal_type = 0
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_03ax6"]
+noise = SubResource("FastNoiseLite_4wtw4")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4wtw4"]
+shader = ExtResource("4_03ax6")
+shader_parameter/emission_plane_size = Vector2(100, 100)
+shader_parameter/min_velocity = 2.0
+shader_parameter/max_velocity = 10.0
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_03ax6")
+shader_parameter/domain_scale = 0.005
+shader_parameter/min_intensity = 1.0
+shader_parameter/max_intensity = 3.0
+shader_parameter/min_alpha = 0.400000019
+shader_parameter/max_alpha = 0.800000038
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mcblx"]
+transparency = 1
+cull_mode = 2
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("4_croqk")
+texture_repeat = false
+use_particle_trails = true
+
+[sub_resource type="RibbonTrailMesh" id="RibbonTrailMesh_4wtw4"]
+material = SubResource("StandardMaterial3D_mcblx")
+shape = 0
+size = 0.2
+sections = 16
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ewrn7"]
+shader = ExtResource("6_4wtw4")
+shader_parameter/particle_diameter = 50.0
+shader_parameter/emission_height = 3.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yi40x"]
+transparency = 1
+cull_mode = 2
+albedo_texture = ExtResource("7_mcblx")
+
+[sub_resource type="QuadMesh" id="QuadMesh_4wtw4"]
+material = SubResource("StandardMaterial3D_yi40x")
+size = Vector2(0.25, 0.25)
+
+[node name="SandWorld_VFX" type="Node3D" unique_id=595215161]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1105996787]
+environment = SubResource("Environment_mcblx")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1037516416]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+light_color = Color(0.9987076, 0.9999986, 0.7346957, 1)
+
+[node name="ChunkManager" parent="." unique_id=460796236 node_paths=PackedStringArray("Player") instance=ExtResource("1_5f2ro")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.0220022, 0)
+Player = NodePath("../Player")
+ChunkScene = ExtResource("2_croqk")
+
+[node name="Player" parent="." unique_id=1255122950 instance=ExtResource("3_03ax6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.42623806, 0.0014791489)
+
+[node name="WindShader" type="Node3D" parent="." unique_id=1069274822]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.140526, 0)
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="WindShader" unique_id=1813475055]
+transform = Transform3D(0.99958396, 0.02884778, 0, -0.028847784, 0.99958384, 0, 0, 0, 1.0000001, 0, -3.345171, -16.511185)
+amount = 1200
+lifetime = 20.0
+preprocess = 8.0
+speed_scale = 1.25
+explosiveness = 0.25
+randomness = 0.25
+fixed_fps = 60
+trail_enabled = true
+trail_lifetime = 0.8
+process_material = SubResource("ShaderMaterial_4wtw4")
+draw_pass_1 = SubResource("RibbonTrailMesh_4wtw4")
+
+[node name="LeafShder" type="Node3D" parent="." unique_id=1257435791]
+transform = Transform3D(0.9976109, 0.06908272, 0, -0.06908272, 0.9976109, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="LeafShder" unique_id=968327080]
+transform = Transform3D(1.0000002, 0, 0, 0, 1.0000002, 0, 0, 0, 1, 0, 2, 0)
+amount = 500
+lifetime = 10.0
+preprocess = 3.0
+randomness = 0.25
+fixed_fps = 60
+visibility_aabb = AABB(-30, -30, -33, 60, 60, 60)
+process_material = SubResource("ShaderMaterial_ewrn7")
+draw_pass_1 = SubResource("QuadMesh_4wtw4")

@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://bh4c6k3mdyw08"
+path="res://.godot/imported/campfire_wood.obj-835559244c33d5fa45353a395d38cb72.mesh"
+
+[deps]
+
+files=["res://.godot/imported/campfire_wood.obj-835559244c33d5fa45353a395d38cb72.mesh"]
+
+source_file="res://Assets/obj/campfire_wood.obj"
+dest_files=["res://.godot/imported/campfire_wood.obj-835559244c33d5fa45353a395d38cb72.mesh", "res://.godot/imported/campfire_wood.obj-835559244c33d5fa45353a395d38cb72.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false

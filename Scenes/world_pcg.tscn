@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://f85aqtmmanle"]
+
+[ext_resource type="PackedScene" uid="uid://cpraeiyn4veys" path="res://Scenes/chunk_manager.tscn" id="1_ua8t5"]
+[ext_resource type="PackedScene" uid="uid://b5gedc3ynn0ku" path="res://Scenes/terrain_generation.tscn" id="2_autv1"]
+[ext_resource type="PackedScene" uid="uid://co03ltmqyi5n6" path="res://Scenes/player.tscn" id="3_pemv6"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_e6e03"]
+
+[sub_resource type="Sky" id="Sky_62sej"]
+sky_material = SubResource("ProceduralSkyMaterial_e6e03")
+
+[sub_resource type="Environment" id="Environment_ewrn7"]
+background_mode = 2
+background_energy_multiplier = 1.25
+sky = SubResource("Sky_62sej")
+
+[node name="World_PCG" type="Node3D" unique_id=1368628925]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1058935227]
+environment = SubResource("Environment_ewrn7")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1502982830]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="ChunkManager" parent="." unique_id=460796236 node_paths=PackedStringArray("Player") instance=ExtResource("1_ua8t5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4646039, 0)
+Player = NodePath("../Player")
+ChunkScene = ExtResource("2_autv1")
+ViewDistance = 4
+
+[node name="Player" parent="." unique_id=1255122950 instance=ExtResource("3_pemv6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.2625203, 0)
+visible = false
+
+[editable path="Player"]

@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="FoliageItem" format=3 uid="uid://cmh2c8obmr33l"]
+
+[ext_resource type="Script" uid="uid://dg6kq7yglyiws" path="res://Scripts/TerrainGeneration/FoliageItem.cs" id="1_dyc60"]
+[ext_resource type="ArrayMesh" uid="uid://du7r7lqna88fl" path="res://Assets/obj/campfire_rocks.obj" id="1_knud3"]
+
+[resource]
+script = ExtResource("1_dyc60")
+Mesh = ExtResource("1_knud3")
+SpawnChance = 0.01
+MinDistance = 800.0
+MinScale = 0.4
+MaxScale = 0.6
+metadata/_custom_type_script = "uid://dg6kq7yglyiws"

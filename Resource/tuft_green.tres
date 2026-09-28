@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="FoliageItem" format=3 uid="uid://6vafj7gdcnnf"]
+
+[ext_resource type="ArrayMesh" uid="uid://5k2benotg4uq" path="res://Assets/obj/tuft_green.obj" id="1_jrv84"]
+[ext_resource type="Script" uid="uid://dg6kq7yglyiws" path="res://Scripts/TerrainGeneration/FoliageItem.cs" id="2_na6w0"]
+
+[resource]
+script = ExtResource("2_na6w0")
+Mesh = ExtResource("1_jrv84")
+SpawnChance = 0.1
+metadata/_custom_type_script = "uid://dg6kq7yglyiws"

@@ -1,0 +1,52 @@
+[gd_scene format=3 uid="uid://d0gvoo0e46a7k"]
+
+[ext_resource type="PackedScene" uid="uid://co03ltmqyi5n6" path="res://Scenes/player.tscn" id="1_smjo6"]
+[ext_resource type="PackedScene" uid="uid://bvs7axo44cudo" path="res://Assets/forest_floor/bushes/Bush_S_flat.glb" id="2_1vuk5"]
+[ext_resource type="PackedScene" uid="uid://c3cpuqbbvb8dh" path="res://Assets/forest_floor/bushes/Bush_M_flat.glb" id="3_fk0w5"]
+[ext_resource type="PackedScene" uid="uid://55tsl6544uta" path="res://Assets/CliffProps/cliffProps2.glb" id="4_ri1lo"]
+[ext_resource type="PackedScene" uid="uid://pjjujxi7204c" path="res://Assets/CliffProps/cliffProps3.glb" id="5_l2bg7"]
+[ext_resource type="PackedScene" uid="uid://m15giqsn5hob" path="res://Assets/CliffProps/cliffProps4.glb" id="6_5kfoc"]
+[ext_resource type="PackedScene" uid="uid://clbjke5u2e61" path="res://Assets/CliffProps/cliffProps5.glb" id="7_xxhut"]
+[ext_resource type="PackedScene" uid="uid://dd6u726r5u81u" path="res://Assets/forest_floor/boulders/Boulder_02_flat.glb" id="8_t5t4d"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_ewrn7"]
+size = Vector3(13.490112, 1, 45.119537)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ewrn7"]
+size = Vector3(13.490112, 1, 45.119537)
+
+[node name="Test1" type="Node3D" unique_id=1774743886]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=286327623]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D" unique_id=1094375419]
+mesh = SubResource("BoxMesh_ewrn7")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=907614837]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.022109032, 0)
+shape = SubResource("BoxShape3D_ewrn7")
+
+[node name="Player" parent="." unique_id=1255122950 instance=ExtResource("1_smjo6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.91157866, 0)
+
+[node name="Bush_S_flat" parent="." unique_id=560627831 instance=ExtResource("2_1vuk5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.713829, 0.2655682, 5.0696926)
+
+[node name="Bush_M_flat" parent="." unique_id=1593736034 instance=ExtResource("3_fk0w5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.7126336, 0.35536617, 4.3485208)
+
+[node name="cliffProps2" parent="." unique_id=984672292 instance=ExtResource("4_ri1lo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.9190543, 1.022109, 7.8399286)
+
+[node name="cliffProps3" parent="." unique_id=500423269 instance=ExtResource("5_l2bg7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.225305, 1.8061882, 7.0876384)
+
+[node name="cliffProps4" parent="." unique_id=1883926678 instance=ExtResource("6_5kfoc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.0058413, 1.8061882, 5.8098693)
+
+[node name="cliffProps5" parent="." unique_id=2003024965 instance=ExtResource("7_xxhut")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.9956665, 2.022109, 11.321881)
+
+[node name="Boulder_02_flat" parent="." unique_id=1424968662 instance=ExtResource("8_t5t4d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1013718, 0.42061755, 18.817184)

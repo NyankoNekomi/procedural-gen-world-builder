@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="FoliageItem" format=3 uid="uid://by3a0ok5xlqse"]
+
+[ext_resource type="ArrayMesh" uid="uid://bf8cbhkjvna2u" path="res://Assets/obj/rock_a.obj" id="1_78gyy"]
+[ext_resource type="Script" uid="uid://dg6kq7yglyiws" path="res://Scripts/TerrainGeneration/FoliageItem.cs" id="1_ee4uh"]
+
+[resource]
+script = ExtResource("1_ee4uh")
+Mesh = ExtResource("1_78gyy")
+SpawnChance = 0.01
+MinDistance = 14.0
+MinScale = 0.004
+MaxScale = 0.008
+metadata/_custom_type_script = "uid://dg6kq7yglyiws"

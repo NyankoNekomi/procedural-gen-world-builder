@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://pru4f2k2omd1"]
+
+[ext_resource type="PackedScene" uid="uid://cpraeiyn4veys" path="res://Scenes/chunk_manager.tscn" id="1_niy33"]
+[ext_resource type="PackedScene" uid="uid://cgt7lmfqg4erk" path="res://Scenes/terrain_sand.tscn" id="2_d34o7"]
+[ext_resource type="PackedScene" uid="uid://co03ltmqyi5n6" path="res://Scenes/player.tscn" id="2_niy33"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_53cvb"]
+sky_top_color = Color(0.73333335, 0.8627451, 1, 1)
+sky_horizon_color = Color(0.63961875, 0.60869163, 0.47591037, 1)
+
+[sub_resource type="Sky" id="Sky_62sej"]
+sky_material = SubResource("ProceduralSkyMaterial_53cvb")
+
+[sub_resource type="Environment" id="Environment_lfwr1"]
+background_mode = 2
+background_energy_multiplier = 1.53
+sky = SubResource("Sky_62sej")
+
+[node name="SandyWorld" type="Node3D" unique_id=1642794718]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=450357230]
+environment = SubResource("Environment_lfwr1")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=289324179]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+light_color = Color(0.9987076, 0.9999986, 0.7346957, 1)
+
+[node name="ChunkManager" parent="." unique_id=460796236 node_paths=PackedStringArray("Player") instance=ExtResource("1_niy33")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4646039, 0)
+Player = NodePath("../Player")
+ChunkScene = ExtResource("2_d34o7")
+
+[node name="Player" parent="." unique_id=1255122950 instance=ExtResource("2_niy33")]

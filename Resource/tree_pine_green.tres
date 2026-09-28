@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="FoliageItem" format=3 uid="uid://duseqd3w20u4h"]
+
+[ext_resource type="Script" uid="uid://dg6kq7yglyiws" path="res://Scripts/TerrainGeneration/FoliageItem.cs" id="1_hy2ft"]
+[ext_resource type="ArrayMesh" uid="uid://blpdtynnfgixu" path="res://Assets/obj/tree_b_green.obj" id="1_wj1qf"]
+
+[resource]
+script = ExtResource("1_hy2ft")
+Mesh = ExtResource("1_wj1qf")
+SpawnChance = 0.02
+MinDistance = 20.0
+MinScale = 0.44999999999999996
+MaxScale = 0.7999999999999999
+metadata/_custom_type_script = "uid://dg6kq7yglyiws"

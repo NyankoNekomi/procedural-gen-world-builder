@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://dkoa3get1ruyy"]
+
+[ext_resource type="PackedScene" uid="uid://d3bk5tbfu1ssk" path="res://Assets/forest_floor/boulders/Boulder_03_flat.glb" id="1_y4ohd"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1e3wf"]
+albedo_color = Color(0.7764706, 0.5294118, 0.39215687, 1)
+
+[node name="Boulder_03_flat" unique_id=1973460715 instance=ExtResource("1_y4ohd")]
+
+[node name="Boulder 3 f" parent="." index="0" unique_id=1932937899]
+surface_material_override/0 = SubResource("StandardMaterial3D_1e3wf")

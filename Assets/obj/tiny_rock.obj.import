@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://b2d0pnbhfcgky"
+path="res://.godot/imported/tiny_rock.obj-8a3d71dd227d9b6047ddee1320c45759.mesh"
+
+[deps]
+
+files=["res://.godot/imported/tiny_rock.obj-8a3d71dd227d9b6047ddee1320c45759.mesh"]
+
+source_file="res://Assets/obj/tiny_rock.obj"
+dest_files=["res://.godot/imported/tiny_rock.obj-8a3d71dd227d9b6047ddee1320c45759.mesh", "res://.godot/imported/tiny_rock.obj-8a3d71dd227d9b6047ddee1320c45759.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false

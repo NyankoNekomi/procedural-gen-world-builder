@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://bkoa8cvbdb4dq"]
+
+[ext_resource type="Script" uid="uid://r1c1lq6lcai8" path="res://Scripts/TerrainGeneration/FoliageManager.cs" id="1_lit0m"]
+
+[node name="Foliage_Manager" type="Node3D" unique_id=343790074]
+script = ExtResource("1_lit0m")

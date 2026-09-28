@@ -1,0 +1,84 @@
+[gd_scene format=3 uid="uid://cgt7lmfqg4erk"]
+
+[ext_resource type="Script" uid="uid://dbw3vq0anfglx" path="res://Scripts/TerrainGeneration/TerrainSand.cs" id="1_7fg7b"]
+[ext_resource type="PackedScene" uid="uid://bkoa8cvbdb4dq" path="res://Scenes/foliage_manager.tscn" id="2_f2y42"]
+[ext_resource type="Shader" uid="uid://d16hm2e214mk" path="res://Resource/ground_shaderSand.gdshader" id="2_g383x"]
+[ext_resource type="Script" uid="uid://dg6kq7yglyiws" path="res://Scripts/TerrainGeneration/FoliageItem.cs" id="4_g383x"]
+[ext_resource type="Resource" uid="uid://8g3rlya57ebr" path="res://Resource/tuft_orange.tres" id="5_bhc4i"]
+[ext_resource type="Script" uid="uid://dbtr1qb1htxgm" path="res://Scripts/TerrainGeneration/FoliageSceneItem.cs" id="6_bhc4i"]
+[ext_resource type="ArrayMesh" uid="uid://dnb82xk64m2rj" path="res://Assets/obj/campfire_complete.obj" id="6_xvgak"]
+[ext_resource type="PackedScene" uid="uid://dtwqiwv04w2og" path="res://Assets/trees/other/Maple_flat_red.glb" id="7_ypl2n"]
+[ext_resource type="PackedScene" uid="uid://haphhj7i5sjc" path="res://Assets/trees/birch/Birch_S_flat.glb" id="8_ilp3a"]
+[ext_resource type="PackedScene" uid="uid://c2pyi3q5p170b" path="res://Assets/forest_floor/bushes/bush_s_flat_orange.tscn" id="10_ilp3a"]
+[ext_resource type="PackedScene" uid="uid://dkoa3get1ruyy" path="res://Assets/forest_floor/boulders/boulder_03_flat_sand.tscn" id="10_xvgak"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_ta16a"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xosgm"]
+render_priority = 1
+shader = ExtResource("2_g383x")
+shader_parameter/sand_albedo = Color(0.67391425, 0.56261164, 0.37680176, 1)
+shader_parameter/grass_albedo = Color(0.25, 0.55, 0.2, 1)
+shader_parameter/patch_albedo = Color(0.85, 0.45, 0.15, 1)
+shader_parameter/sand_roughness = 0.3130000148675
+shader_parameter/grass_roughness = 0.6400000304
+shader_parameter/patch_roughness = 0.6910000328225
+shader_parameter/sand_height_max = 2.0
+shader_parameter/height_blend_margin = 3.24300015334398
+shader_parameter/min_grass_slope = 0.4230000200925
+shader_parameter/slope_blend_margin = 0.1
+shader_parameter/patch_scale = 0.15
+shader_parameter/patch_threshold = 0.6
+shader_parameter/patch_blend_margin = 0.1
+
+[sub_resource type="Resource" id="Resource_ilp3a"]
+script = ExtResource("4_g383x")
+Mesh = ExtResource("6_xvgak")
+SpawnChance = 0.0005
+MinDistance = 1.0
+metadata/_custom_type_script = "uid://dg6kq7yglyiws"
+
+[sub_resource type="Resource" id="Resource_lit0m"]
+script = ExtResource("6_bhc4i")
+Scene = ExtResource("7_ypl2n")
+SpawnChance = 0.003
+MinDistance = 10.0
+MinScale = 0.55
+MaxScale = 0.9
+metadata/_custom_type_script = "uid://dbtr1qb1htxgm"
+
+[sub_resource type="Resource" id="Resource_u3ixp"]
+script = ExtResource("6_bhc4i")
+Scene = ExtResource("8_ilp3a")
+SpawnChance = 0.0052
+MinDistance = 20.0
+MinScale = 0.5
+MaxScale = 0.95
+metadata/_custom_type_script = "uid://dbtr1qb1htxgm"
+
+[sub_resource type="Resource" id="Resource_rj8wd"]
+script = ExtResource("6_bhc4i")
+Scene = ExtResource("10_xvgak")
+SpawnChance = 0.0005
+MinDistance = 10.6
+MinScale = 0.30000000000000004
+MaxScale = 0.55
+metadata/_custom_type_script = "uid://dbtr1qb1htxgm"
+
+[sub_resource type="Resource" id="Resource_d7hde"]
+script = ExtResource("6_bhc4i")
+Scene = ExtResource("10_ilp3a")
+SpawnChance = 0.0005
+metadata/_custom_type_script = "uid://dbtr1qb1htxgm"
+
+[node name="TerrainSand" type="Node3D" unique_id=111411352 node_paths=PackedStringArray("Foliage")]
+script = ExtResource("1_7fg7b")
+Noise = SubResource("FastNoiseLite_ta16a")
+TerrainShader = SubResource("ShaderMaterial_xosgm")
+Foliage = NodePath("Foliage_Manager")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1184824124]
+
+[node name="Foliage_Manager" parent="." unique_id=343790074 instance=ExtResource("2_f2y42")]
+FoliageTypes = Array[ExtResource("4_g383x")]([ExtResource("5_bhc4i"), SubResource("Resource_ilp3a")])
+SceneFoliage = Array[ExtResource("6_bhc4i")]([SubResource("Resource_lit0m"), SubResource("Resource_u3ixp"), SubResource("Resource_rj8wd"), SubResource("Resource_d7hde")])

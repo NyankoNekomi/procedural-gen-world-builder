@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://b5gedc3ynn0ku"]
+
+[ext_resource type="Script" uid="uid://cowckgtts7io4" path="res://Scripts/TerrainGeneration/TerrainGeneration.cs" id="1_1ipix"]
+[ext_resource type="PackedScene" uid="uid://bkoa8cvbdb4dq" path="res://Scenes/foliage_manager.tscn" id="2_7cbmc"]
+[ext_resource type="Script" uid="uid://dg6kq7yglyiws" path="res://Scripts/TerrainGeneration/FoliageItem.cs" id="3_x250n"]
+[ext_resource type="Resource" uid="uid://6vafj7gdcnnf" path="res://Resource/tuft_green.tres" id="4_ta16a"]
+[ext_resource type="Resource" uid="uid://qakpoixu7ts5" path="res://Resource/tree_round_green.tres" id="5_xosgm"]
+[ext_resource type="Resource" uid="uid://by3a0ok5xlqse" path="res://Resource/stone_a.tres" id="6_48jro"]
+[ext_resource type="Resource" uid="uid://duseqd3w20u4h" path="res://Resource/tree_pine_green.tres" id="7_x250n"]
+[ext_resource type="Resource" uid="uid://cmh2c8obmr33l" path="res://Resource/campfire_stone.tres" id="8_ta16a"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_n5w4x"]
+
+[node name="Terrain_generation" type="Node3D" unique_id=2007926197 node_paths=PackedStringArray("Foliage")]
+script = ExtResource("1_1ipix")
+Noise = SubResource("FastNoiseLite_n5w4x")
+Foliage = NodePath("Foliage_Manager")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=67250587]
+
+[node name="Foliage_Manager" parent="." unique_id=343790074 instance=ExtResource("2_7cbmc")]
+FoliageTypes = Array[ExtResource("3_x250n")]([ExtResource("4_ta16a"), ExtResource("5_xosgm"), ExtResource("6_48jro"), ExtResource("7_x250n"), ExtResource("8_ta16a")])
